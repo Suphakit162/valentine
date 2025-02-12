@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day 💖</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #ff4d6d;
+            margin: 0;
+            padding: 0;
+        }
+        .countdown-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px;
+            font-weight: bold;
+            color: #ff4d6d;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .container {
+            margin-top: 50px;
+            background: #ffebf0;
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 5px solid #ff4d6d;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        h1 {
+            font-size: 40px;
+            color: #ff4d6d;
+        }
+        .heart {
+            font-size: 100px;
+            color: red;
+            animation: heartbeat 1s infinite alternate;
+        }
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+        .message {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #d63384;
+        }
+        #gift {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#gift img {
+    width: 250px; /* ปรับขนาดรูปให้เท่ากัน */
+    height: 250px; /* ป้องกันรูปไม่สมดุล */
+    object-fit: cover; /* ตัดขอบให้รูปไม่ผิดสัดส่วน */
+    border-radius: 15px;
+    margin: 10px; /* เพิ่มระยะห่างระหว่างรูป */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้นุ่มนวล */
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="countdown" class="countdown-container">3</div>
+
+    <div class="container" id="card">
+        <h1>Happy Valentine Day My boo ❤️</h1>
+        <div class="heart">💖</div>
+        <p class="message"></p>
+        <button class="button" onclick="showGift()">กดด้ายยยยย</button>
+        <div id="gift">
+            <p>ขอบคุณที่อยู่ด้วยกานมานานมั่กๆเยยน้า ขอบคุณที่อยู่เคียงข้างกานม่ายปายหนาย
+                ขอห้ายอยู่ด้วยกานนานๆแบบนี้ปายอีกตราบนานเท่าน้านเยยบี๋ ย้ากมากกว่าเย๊ยยยยย 💕</p>
+            <img src="valentine1.jpg" alt="Valentine Gift">
+            <img src="valentine2.jpg" alt="Valentine Gift">
+            <img src="valentine3.jpg" alt="Valentine Gift">
+        </div>
+    </div>
+
+    <script>
+        let countdownElement = document.getElementById("countdown");
+        let cardElement = document.getElementById("card");
+        let countdown = 3;
+
+        function startCountdown() {
+            let interval = setInterval(() => {
+                if (countdown > 1) {
+                    countdown--;
+                    countdownElement.innerText = countdown;
+                } else {
+                    clearInterval(interval);
+                    countdownElement.style.opacity = "0";
+                    setTimeout(() => {
+                        countdownElement.style.display = "none";
+                        cardElement.style.opacity = "1";
+                        cardElement.style.transform = "scale(1)";
+                    }, 500);
+                }
+            }, 1000);
+        }
+
+        function showGift() {
+            document.getElementById("gift").style.display = "block";
+        }
+
+        window.onload = startCountdown;
+    </script>
+
+</body>
+</html>
